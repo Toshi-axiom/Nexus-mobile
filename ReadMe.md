@@ -1,0 +1,1 @@
+A simple Card UI for Blog Post Or Products where showing 3 different cards of latest mobile phones launched in 2025 with their short description and prices. 
