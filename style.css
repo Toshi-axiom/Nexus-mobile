@@ -90,18 +90,6 @@ button{
 button:hover{
     background: #1769aa;
 }
-@media (max-width: 720px){
-    .card-container{
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
-
-    }
-    .card{
-        width: 90%;
-        max-width: 340px;
-    }
-}
 .home{
     background: #ffffff;
     border-radius: 12px;
@@ -121,7 +109,7 @@ button:hover{
 }
 .home p{
     font-size: 1.1em;
-    
+
 }
 .home ul{
     list-style-type:none;
@@ -204,4 +192,34 @@ button:hover{
     padding-left: 18px;
     margin-bottom: 18px;
 }
+@media (max-width: 720px){
+    .home,.about-content,.contact-form{
+        max-width: 98vw;
+        padding: 15px 7px;
+        margin: 12px auto;
+        font-size: 1em;
+    }
+    .nav-logo{
+        font-size: 1.1em;
+    }
+    .links{
+        gap: 10px;
+        font-size: 1.1em;
+        flex-wrap: wrap;
+    }
 
+    .card-container{
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+
+    }
+    .card{
+        width: 90%;
+        max-width: 340px;
+    }
+    .contact-form input,textarea{
+        width: 100%;
+
+    }
+}
