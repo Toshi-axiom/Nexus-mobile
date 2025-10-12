@@ -182,7 +182,7 @@ button:hover{
     font-size: 1.1em;
     line-height: 1.7em;
 }
-.about-content h1,h2,h3{
+.about-content h1,h3{
     color: #1769aa;
     margin-bottom: 16px;
     font-weight: 700;
