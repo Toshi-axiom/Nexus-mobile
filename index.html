@@ -19,6 +19,7 @@
             <li><a href="index.html" style="color: var(--color-cream);">Catalog</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="#" id="cart-btn" style="color: var(--color-sand);">Cart <span class="cart-badge" id="cart-count">0</span></a></li>
         </ul>
     </nav>
 
@@ -28,56 +29,35 @@
     </div>
 
     <div class="container">
-        <div class="card-container gsap-stagger">
-            
-            <div class="card tilt-card">
-                <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="iPhone 15 Pro">
-                <h2>Apple iPhone 15 Pro</h2>
-                <p>Titanium. A17 Pro chip. 256GB.</p>
-                <span class="price">₹1,34,900</span>
-                <button class="btn-primary">Add to Cart</button>
-            </div>
+        <!-- Filter Bar -->
+        <div class="filter-bar gsap-stagger">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="flagship">Flagships</button>
+            <button class="filter-btn" data-filter="foldable">Foldables</button>
+            <button class="filter-btn" data-filter="midrange">Mid-Range</button>
+        </div>
 
-            <div class="card tilt-card">
-                <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="Samsung Galaxy S24 Ultra">
-                <h2>Galaxy S24 Ultra</h2>
-                <p>Titanium Gray, 12GB RAM, 512GB.</p>
-                <span class="price">₹1,39,999</span>
-                <button class="btn-primary">Add to Cart</button>
-            </div>
+        <!-- Dynamic Product Grid -->
+        <div class="card-container gsap-stagger" id="product-grid">
+            <!-- Products will be injected here by script.js -->
+        </div>
+    </div>
 
-            <div class="card tilt-card">
-                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="Google Pixel 8 Pro">
-                <h2>Google Pixel 8 Pro</h2>
-                <p>Obsidian, 12GB RAM, 128GB.</p>
-                <span class="price">₹1,06,999</span>
-                <button class="btn-primary">Add to Cart</button>
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be injected here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">₹0</span>
             </div>
-
-            <div class="card tilt-card">
-                <img src="https://images.unsplash.com/photo-1592899677974-e50880b00546?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="Samsung Galaxy A55">
-                <h2>Samsung Galaxy A55 5G</h2>
-                <p>Awesome Iceblue, 8GB RAM, 256GB.</p>
-                <span class="price">₹42,999</span>
-                <button class="btn-primary">Add to Cart</button>
-            </div>
-
-            <div class="card tilt-card">
-                <img src="https://images.unsplash.com/photo-1598327105666-5b89351cb31b?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="OnePlus 12">
-                <h2>OnePlus 12 5G</h2>
-                <p>Flowy Emerald, 16GB RAM, 512GB.</p>
-                <span class="price">₹69,999</span>
-                <button class="btn-primary">Add to Cart</button>
-            </div>
-
-            <div class="card tilt-card">
-                <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cddea?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="iQOO 12">
-                <h2>iQOO 12 5G</h2>
-                <p>Legend Edition, 12GB RAM, 256GB.</p>
-                <span class="price">₹52,999</span>
-                <button class="btn-primary">Add to Cart</button>
-            </div>
-
+            <button class="btn-primary" style="width: 100%;">Proceed to Checkout</button>
         </div>
     </div>
 

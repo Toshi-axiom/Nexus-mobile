@@ -86,92 +86,228 @@ if (canvas) {
     animateParticles();
 }
 
-// 2. Initialize VanillaTilt for 3D Cards
-// FIX: Exclude inputs/textareas inside tilt cards from tilt interference
-if (typeof VanillaTilt !== 'undefined') {
-    VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-        max: 15,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.2,
-        scale: 1.02
+// 2. Helper to Initialize VanillaTilt for 3D Cards
+function initVanillaTilt(elements) {
+    if (typeof VanillaTilt !== 'undefined' && elements.length > 0) {
+        VanillaTilt.init(elements, {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+            scale: 1.02
+        });
+
+        elements.forEach(card => {
+            card.querySelectorAll('input, textarea').forEach(el => {
+                el.addEventListener('focus', () => {
+                    if (card.vanillaTilt) card.vanillaTilt.destroy();
+                });
+                el.addEventListener('blur', () => {
+                    if (!card.vanillaTilt) {
+                        VanillaTilt.init(card, {
+                            max: 15, speed: 400, glare: true, "max-glare": 0.2, scale: 1.02
+                        });
+                    }
+                });
+            });
+        });
+    }
+}
+
+// 3. Helper to Initialize GSAP Stagger
+function initScrollTriggers(containers) {
+    if (typeof gsap !== 'undefined' && containers.length > 0) {
+        containers.forEach(container => {
+            const items = container.querySelectorAll('.tilt-card, .feature-card, .page-content');
+            if (items.length > 0) {
+                gsap.fromTo(items,
+                    { y: 60, opacity: 0 },
+                    {
+                        scrollTrigger: {
+                            trigger: container,
+                            start: "top bottom", 
+                        },
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        stagger: 0.15,
+                        ease: "back.out(1.7)",
+                        clearProps: "all"
+                    }
+                );
+            }
+        });
+    }
+}
+
+// Initialize global static GSAP
+if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    if (document.querySelector(".gsap-nav")) gsap.from(".gsap-nav", { y: -50, opacity: 0, duration: 1, ease: "power3.out" });
+    if (document.querySelector(".gsap-hero h1")) gsap.from(".gsap-hero h1", { y: 50, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out" });
+    if (document.querySelector(".gsap-hero p")) gsap.from(".gsap-hero p", { y: 30, opacity: 0, duration: 1, delay: 0.4, ease: "power3.out" });
+}
+
+// 4. Cart System
+const Cart = {
+    items: [],
+    
+    init() {
+        const saved = localStorage.getItem('nexus_cart');
+        if (saved) {
+            this.items = JSON.parse(saved);
+        }
+        this.updateUI();
+        
+        document.getElementById('cart-btn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('cart-drawer').classList.add('open');
+        });
+        document.getElementById('close-cart')?.addEventListener('click', () => {
+            document.getElementById('cart-drawer').classList.remove('open');
+        });
+        
+        // Expose remove item globally for the generated HTML
+        window.removeFromCart = (id) => this.remove(id);
+    },
+
+    add(product) {
+        const existing = this.items.find(i => i.id === product.id);
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            this.items.push({ ...product, quantity: 1 });
+        }
+        this.save();
+    },
+
+    remove(id) {
+        this.items = this.items.filter(i => i.id !== id);
+        this.save();
+    },
+
+    save() {
+        localStorage.setItem('nexus_cart', JSON.stringify(this.items));
+        this.updateUI();
+    },
+
+    updateUI() {
+        const countSpan = document.getElementById('cart-count');
+        const itemsContainer = document.getElementById('cart-items');
+        const totalPriceEl = document.getElementById('cart-total-price');
+        
+        if (!countSpan || !itemsContainer) return;
+
+        const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+        const totalPrice = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        countSpan.textContent = totalItems;
+        totalPriceEl.textContent = `₹${totalPrice.toLocaleString('en-IN')}`;
+        
+        if (this.items.length === 0) {
+            itemsContainer.innerHTML = '<p style="color: var(--color-bronze); text-align: center; margin-top: 20px;">Your cart is empty.</p>';
+            return;
+        }
+
+        itemsContainer.innerHTML = this.items.map(item => `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-details">
+                    <h4>${item.name}</h4>
+                    <p>₹${item.price.toLocaleString('en-IN')} x ${item.quantity}</p>
+                </div>
+                <button class="remove-btn" onclick="removeFromCart('${item.id}')">&times;</button>
+            </div>
+        `).join('');
+    }
+};
+
+Cart.init();
+
+// 5. Dynamic Data Fetching & Rendering
+const productGrid = document.getElementById('product-grid');
+let allProducts = [];
+
+if (productGrid) {
+    // Fetch products
+    fetch('products.json')
+        .then(res => res.json())
+        .then(data => {
+            allProducts = data;
+            renderProducts(allProducts);
+            
+            // Setup Filter Bar
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    const filter = e.target.getAttribute('data-filter');
+                    if (filter === 'all') {
+                        renderProducts(allProducts);
+                    } else {
+                        renderProducts(allProducts.filter(p => p.category === filter));
+                    }
+                });
+            });
+        })
+        .catch(err => console.error("Failed to load products:", err));
+} else {
+    // If not on index.html, just initialize static elements
+    initVanillaTilt(document.querySelectorAll(".tilt-card"));
+    initScrollTriggers(document.querySelectorAll('.gsap-stagger'));
+}
+
+function renderProducts(products) {
+    productGrid.innerHTML = '';
+    
+    if (products.length === 0) {
+        productGrid.innerHTML = '<p style="color: var(--color-cream); grid-column: 1/-1; text-align: center;">No products found.</p>';
+        return;
+    }
+
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'card tilt-card';
+        card.innerHTML = `
+            <img src="${product.image}" style="object-fit: cover;" alt="${product.name}">
+            <h2>${product.name}</h2>
+            <p>${product.specs}</p>
+            <span class="price">₹${product.price.toLocaleString('en-IN')}</span>
+            <button class="btn-primary add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
+        `;
+        productGrid.appendChild(card);
     });
 
-    // FIX: Pause tilt on form focus, resume on blur to prevent input drift
-    document.querySelectorAll('.tilt-card input, .tilt-card textarea').forEach(el => {
-        el.addEventListener('focus', () => {
-            const card = el.closest('.tilt-card');
-            if (card && card.vanillaTilt) card.vanillaTilt.destroy();
-        });
-        el.addEventListener('blur', () => {
-            const card = el.closest('.tilt-card');
-            if (card && !card.vanillaTilt) {
-                VanillaTilt.init(card, {
-                    max: 15, speed: 400, glare: true,
-                    "max-glare": 0.2, scale: 1.02
-                });
+    // Add Cart button listeners
+    productGrid.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const id = e.target.getAttribute('data-id');
+            const product = allProducts.find(p => p.id === id);
+            if (product) {
+                Cart.add(product);
+                
+                // Button visual feedback
+                const originalText = btn.innerText;
+                btn.innerText = "Added ✓";
+                btn.style.color = "var(--color-bg-dark)";
+                btn.style.background = "var(--color-sand)";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.color = "var(--color-cream)";
+                    btn.style.background = "transparent";
+                }, 2000);
             }
         });
     });
+
+    // Re-initialize 3D & Animations for new elements
+    ScrollTrigger.refresh();
+    initVanillaTilt(productGrid.querySelectorAll(".tilt-card"));
+    
+    // For GSAP, we manually trigger a simple fade-up since ScrollTrigger batching is complex on dynamic replace
+    gsap.fromTo(productGrid.querySelectorAll('.tilt-card'),
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out", clearProps: "all" }
+    );
 }
-
-// 3. GSAP Animations
-if (typeof gsap !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-
-    if (document.querySelector(".gsap-nav")) {
-        gsap.from(".gsap-nav", {
-            y: -50, opacity: 0, duration: 1, ease: "power3.out"
-        });
-    }
-
-    if (document.querySelector(".gsap-hero h1")) {
-        gsap.from(".gsap-hero h1", {
-            y: 50, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out"
-        });
-    }
-
-    if (document.querySelector(".gsap-hero p")) {
-        gsap.from(".gsap-hero p", {
-            y: 30, opacity: 0, duration: 1, delay: 0.4, ease: "power3.out"
-        });
-    }
-
-    document.querySelectorAll('.gsap-stagger').forEach(container => {
-        const items = container.querySelectorAll('.tilt-card, .feature-card, .page-content');
-        if (items.length > 0) {
-            gsap.fromTo(items,
-                { y: 60, opacity: 0 },
-                {
-                    scrollTrigger: {
-                        trigger: container,
-                        start: "top bottom", 
-                    },
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: "back.out(1.7)",
-                    clearProps: "all"
-                }
-            );
-        }
-    });
-}
-
-// 4. Button click interaction
-// FIX: Only target catalogue "Add to Cart" buttons, not the contact form submit button
-document.querySelectorAll('.card button.btn-primary').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const originalText = btn.innerText;
-        btn.innerText = "Added ✓";
-        btn.style.color = "var(--color-bg-dark)";
-        btn.style.background = "var(--color-sand)";
-
-        setTimeout(() => {
-            btn.innerText = originalText;
-            btn.style.color = "var(--color-cream)";
-            btn.style.background = "transparent";
-        }, 2000);
-    });
-});

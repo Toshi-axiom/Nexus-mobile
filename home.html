@@ -17,6 +17,7 @@
             <li><a href="index.html">Catalog</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="#" id="cart-btn" style="color: var(--color-sand);">Cart <span class="cart-badge" id="cart-count">0</span></a></li>
         </ul>
     </nav>
 
@@ -66,6 +67,24 @@
                 <p>For those who refuse to compromise, the S24 Ultra offers the most complete package. With its integrated S-Pen, a versatile quad-camera system with incredible zoom, and a stunning anti-reflective display, it's the ultimate productivity and creativity tool.</p>
                 <a href="index.html" class="btn-primary" style="display: inline-block; width: auto; margin-top: 15px;">View Details in Catalog</a>
             </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be injected here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">₹0</span>
+            </div>
+            <button class="btn-primary" style="width: 100%;">Proceed to Checkout</button>
         </div>
     </div>
 

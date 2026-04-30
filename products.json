@@ -1,0 +1,56 @@
+[
+    {
+        "id": "p_1",
+        "name": "Apple iPhone 15 Pro",
+        "brand": "Apple",
+        "category": "flagship",
+        "price": 134900,
+        "specs": "Titanium. A17 Pro chip. 256GB.",
+        "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=60"
+    },
+    {
+        "id": "p_2",
+        "name": "Samsung Galaxy S24 Ultra",
+        "brand": "Samsung",
+        "category": "flagship",
+        "price": 139999,
+        "specs": "Titanium Gray, 12GB RAM, 512GB.",
+        "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=60"
+    },
+    {
+        "id": "p_3",
+        "name": "Google Pixel 8 Pro",
+        "brand": "Google",
+        "category": "flagship",
+        "price": 106999,
+        "specs": "Obsidian, 12GB RAM, 128GB.",
+        "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=60"
+    },
+    {
+        "id": "p_4",
+        "name": "Samsung Galaxy Z Fold 5",
+        "brand": "Samsung",
+        "category": "foldable",
+        "price": 154999,
+        "specs": "Icy Blue, 12GB RAM, 256GB.",
+        "image": "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&auto=format&fit=crop&q=60"
+    },
+    {
+        "id": "p_5",
+        "name": "OnePlus 12 5G",
+        "brand": "Android",
+        "category": "flagship",
+        "price": 69999,
+        "specs": "Flowy Emerald, 16GB RAM, 512GB.",
+        "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=60"
+    },
+    {
+        "id": "p_6",
+        "name": "Nothing Phone (2)",
+        "brand": "Android",
+        "category": "midrange",
+        "price": 44999,
+        "specs": "Dark Grey, 12GB RAM, 256GB. Glyph Interface.",
+        "image": "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=500&auto=format&fit=crop&q=60"
+    }
+]
