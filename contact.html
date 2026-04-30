@@ -3,28 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Contact - Premium Mobiles</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class="nav-logo">My Mobile store</div>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="gsap-nav">
+        <div class="nav-logo">Nexus Mobile</div>
         <ul class="links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="index.html">Mobiles</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="home.html">Guide</a></li>
+            <li><a href="index.html">Catalog</a></li>
+            <li><a href="contact.html" style="color: var(--color-cream);">Contact</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
     </nav>
-    <h1>Contact us</h1>
-    <form class = "contact-form">
-        <label for="name">Name: </label>
-        <input type="text" id = "name" name ="name" required>
-        <label for="email">Email ID: </label>
-        <input type="email" id = "email" name = "email" required>
-        <label for="message">Message: </label>
-        <textarea id="message" name = "meesage" rows = 5 required></textarea>
-        <button type ="submit">Submit form</button>
-    </form>
+
+    <div class="container gsap-stagger" style="margin-top: 40px;">
+        <h2 class="section-title">Support & Inquiries</h2>
+        <div class="content-wrapper two-col">
+            <!-- Form Section -->
+            <div class="page-content tilt-card" data-tilt-max="3" data-tilt-glare="false">
+                <h2>Send a Message</h2>
+                <p style="margin-bottom: 20px;">Have questions about our premium devices? Our concierge team is ready to assist you.</p>
+                
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="message">Your Inquiry</label>
+                        <textarea id="message" placeholder="How can we help you today?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="margin-top: 10px;">Send Message</button>
+                </form>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="page-content tilt-card" data-tilt-max="3" data-tilt-glare="false">
+                <h2>Frequently Asked Questions</h2>
+                <div style="margin-top: 20px;">
+                    <div class="faq-item">
+                        <h4>Do you ship internationally?</h4>
+                        <p>Yes, we offer fully insured express global shipping. Deliveries typically arrive within 48-72 hours worldwide.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What is your return policy?</h4>
+                        <p>We offer a 30-day, no-questions-asked return policy on all pristine condition devices.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Do devices come with a warranty?</h4>
+                        <p>All devices include the full manufacturer's warranty, plus our exclusive 1-year Nexus Concierge protection.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Can I request a device not listed?</h4>
+                        <p>Absolutely. Contact our concierge team through the form and we will source specific luxury tech items for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Nexus Mobile</h3>
+                <p>Curating the world's most exceptional technology for the uncompromising individual.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Catalog</a></li>
+                    <li><a href="home.html">Buyer's Guide</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe for exclusive early access to limited edition drops.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Email Address">
+                    <button>Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nexus Mobile. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

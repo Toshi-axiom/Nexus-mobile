@@ -3,33 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About Us - Premium Mobiles</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class="nav-logo">My Mobile store</div>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="gsap-nav">
+        <div class="nav-logo">Nexus Mobile</div>
         <ul class="links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="index.html">Mobiles</a></li>
+            <li><a href="home.html">Guide</a></li>
+            <li><a href="index.html">Catalog</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html" style="color: var(--color-cream);">About</a></li>
         </ul>
     </nav>
-    <div class = "about-content">
-        <h1>About Us</h1>
-    <p>"My Mobile Store" is a trusted mobile retailer known for the latest smartphones, best offers, and customer satisfaction. Our goal is to provide every customer with the right mobile phone, genuine products, and the best pricing according to their needs. We offer exclusive deals, fast delivery, and after-sales support. We are always dedicated to delivering the best products and services to our customers.</p>
 
-    <h3>Our mission</h3>
-    <p>To deliver genuine products, unbeatable prices, and excellent customer experience to every mobile lover.</p>
-    <h3>Why choose us ?</h3>
-    <ul>
-            <li>Wide range of mobiles from top brands</li>
-            <li>Best price guarantee & exclusive online offers</li>
-            <li>Quick delivery and easy returns</li>
-            <li>Responsive, friendly support</li>
-            <li>100% authentic & warranty-backed devices</li>
-        </ul>
+    <div class="container gsap-stagger" style="margin-top: 40px;">
+        <h2 class="section-title">The Nexus Story</h2>
+        <div class="content-wrapper two-col">
+            <div class="page-content tilt-card" data-tilt-max="3" data-tilt-glare="false">
+                <h2>Our Vision</h2>
+                <p style="margin-bottom: 20px;">At Nexus Mobile, we believe that a smartphone is more than just a communication device—it's an extension of your lifestyle, your creativity, and your ambition. We curate only the most exceptional, cutting-edge technology to bring you devices that empower your everyday life.</p>
+                
+                <h3 style="color: var(--color-sand); margin: 30px 0 15px;">Why Choose Us?</h3>
+                <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px;">
+                    <li><strong>Curated Excellence:</strong> We don't sell every phone, only the best ones.</li>
+                    <li><strong>Unrivaled Support:</strong> Our dedicated concierge team ensures your technical needs are always met.</li>
+                    <li><strong>Future-Ready:</strong> We focus on devices that are built to last with the latest AI and hardware advancements.</li>
+                </ul>
+            </div>
+
+            <div class="page-content tilt-card" data-tilt-max="3" data-tilt-glare="false">
+                <h2>Our Manifesto</h2>
+                <p>Technology should not be disposable. It should be monumental.</p>
+                <p>Founded in 2026, Nexus was born out of frustration with the clutter of the modern tech marketplace. We saw a world overwhelmed by mediocre choices and confusing spec sheets.</p>
+                <p>We decided to cut through the noise. Our team of expert technologists spends thousands of hours testing every flagship release, but we only list the devices that achieve true greatness. When you buy from Nexus, you aren't just buying a phone; you are investing in a verified masterpiece of modern engineering.</p>
+                <div style="margin-top: 30px; text-align: center;">
+                    <span style="font-size: 3rem; color: var(--color-sand);">✦</span>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Nexus Mobile</h3>
+                <p>Curating the world's most exceptional technology for the uncompromising individual.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Catalog</a></li>
+                    <li><a href="home.html">Buyer's Guide</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe for exclusive early access to limited edition drops.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Email Address">
+                    <button>Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nexus Mobile. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

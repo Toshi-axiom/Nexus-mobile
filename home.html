@@ -3,44 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Buyer's Guide - Premium Mobiles</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class = "nav-logo">My Mobile Store</div>
-        <ul class = "links">
-            <li><a href = "home.html">Home</a></li>
-            <li><a href = "index.html">Mobiles</a></li>
-            <li><a href = " contact.html">Contact</a></li>
-            <li><a href = "about.html">About</a></li>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="gsap-nav">
+        <div class="nav-logo">Nexus Mobile</div>
+        <ul class="links">
+            <li><a href="home.html" style="color: var(--color-cream);">Guide</a></li>
+            <li><a href="index.html">Catalog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
-    <div class="home">
-        <h2>Components one should see before purchasing</h2>
-        <p>Before you invest in a new smartphone, it's important to check its features and specifications to make sure the device meets your needs. Here are the top factors you should always consider:</p>
-        <ul>
-            <li><strong>Processor: </strong>The brain of your phone. A powerful processor ensures smooth performance, better gaming, and multitasking. Look for latest-generation chips from brands like Qualcomm Snapdragon, MediaTek, or Apple.</li>
 
-            <li><strong>RAM: </strong>Determines how well your phone handles multiple apps at once. 6GB or higher is ideal for heavy use, but 4GB is enough for normal daily tasks.</li>
-
-            <li><strong>Storage: </strong> More storage allows you to save more photos, videos, and apps. Check if the storage can be expanded with a memory card.</li>
-
-            <li><strong>Display: </strong>Bigger, sharper displays with high resolution (Full HD or above) provide better viewing, especially for videos and games.</li>
-
-            <li><strong>Battery life:</strong> Higher mAh means longer usage. Look for phones with fast charging for extra convenience.</li>
-
-            <li><strong>Camera:</strong> For photography lovers, check megapixels, lens quality, night mode and extra features.</li>
-
-            <li><strong>Build Quality:</strong> Sturdy materials and good design mean more durability. Consider water/dust resistance if you need it.</li>
-
-            <li><strong>Operating System:</strong> Updated Android/iOS is more secure and feature-rich. Also, check the brand's track record for software updates.</li>
-
-            <li><strong>Network Support:</strong>Want 5G? Make sure the phone supports your preferred connectivity and has dual SIM if needed.</li>
-
-            <li><strong>Price & Brand:</strong> Look for trusted brands such as Samsung, Xiaomi, OnePlus, Apple, etc. and match your choice to your budget.</li>
-        </ul>
+    <div class="hero gsap-hero">
+        <h1>Ultimate Buyer's Guide</h1>
+        <p>Before you invest in a new smartphone, consider these top features to ensure the device perfectly aligns with your lifestyle.</p>
     </div>
-    
+
+    <div class="container gsap-stagger">
+        <div class="feature-grid">
+            <div class="feature-card tilt-card">
+                <strong>⚡ Processor</strong>
+                The brain of your phone. Look for the latest Apple A-series or Snapdragon chips for gaming and seamless multitasking.
+            </div>
+            <div class="feature-card tilt-card">
+                <strong>🧠 RAM & Storage</strong>
+                Aim for 8GB+ RAM for heavy use. Opt for 256GB+ storage if you shoot a lot of 4K video or play large games.
+            </div>
+            <div class="feature-card tilt-card">
+                <strong>📱 Display Quality</strong>
+                OLED or AMOLED displays with a 120Hz refresh rate provide the sharpest colors and smoothest scrolling experience.
+            </div>
+            <div class="feature-card tilt-card">
+                <strong>🔋 Battery Life</strong>
+                Look for 4500mAh+ capacity and rapid charging support to keep you powered throughout your busiest days.
+            </div>
+            <div class="feature-card tilt-card">
+                <strong>📸 Camera System</strong>
+                Beyond megapixels, look for optical zoom, large sensors for night mode, and computational photography features.
+            </div>
+            <div class="feature-card tilt-card">
+                <strong>🛡️ Build & OS</strong>
+                Premium materials (titanium, glass) and long-term OS update support (4+ years) ensure your device lasts.
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Recommendation -->
+    <div class="container gsap-stagger" style="margin-top: 40px;">
+        <h2 class="section-title">Editor's Choice: The All-Rounder</h2>
+        <div class="page-content tilt-card" style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=60" alt="Galaxy S24 Ultra" style="width: 100%; border-radius: 12px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); transform: translateZ(30px); object-fit: cover;">
+            </div>
+            <div style="flex: 1; min-width: 300px; transform: translateZ(40px);">
+                <h3 style="font-size: 2rem; color: var(--color-sand);">Samsung Galaxy S24 Ultra</h3>
+                <p>For those who refuse to compromise, the S24 Ultra offers the most complete package. With its integrated S-Pen, a versatile quad-camera system with incredible zoom, and a stunning anti-reflective display, it's the ultimate productivity and creativity tool.</p>
+                <a href="index.html" class="btn-primary" style="display: inline-block; width: auto; margin-top: 15px;">View Details in Catalog</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Nexus Mobile</h3>
+                <p>Curating the world's most exceptional technology for the uncompromising individual.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Catalog</a></li>
+                    <li><a href="home.html">Buyer's Guide</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe for exclusive early access to limited edition drops.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Email Address">
+                    <button>Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nexus Mobile. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

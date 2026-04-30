@@ -3,43 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Premium Mobiles</title>
     <link rel="stylesheet" href="style.css">
-
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class = "nav-logo">My Mobile store</div>
-        <ul class = "links">
-             <li><a href="home.html">Home</a></li>
-             <li><a href="index.html">Mobiles</a></li>
-             <li><a href="contact.html">Contact</a></li>
-             <li><a href="about.html">About</a></li>
+    <!-- 3D Particle Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="gsap-nav">
+        <div class="nav-logo">Nexus Mobile</div>
+        <ul class="links">
+            <li><a href="home.html">Guide</a></li>
+            <li><a href="index.html" style="color: var(--color-cream);">Catalog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
-    <div class = "card-container">
-        <div class = "card">
-            <img src = "https://m.media-amazon.com/images/I/41ASR9mjFTL._SY300_SX300_QL70_FMwebp_.jpg" alt = "Mobile 1">
-            <h2>Samsung Galaxy A55 5G</h2>
-            <P>Awesome Iceblue, 8GB RAM, 256GB Storage</P>
-            <span class = "price">₹23,999</span>
-            <button>BUY NOW</button>
-        </div>
-        <div class ="card">
-            <img src = "https://m.media-amazon.com/images/I/41nCWkryqHL._SY300_SX300_QL70_FMwebp_.jpg" alt = "Mobile 2">
-            <h2>Realme 15T 5G</h2>
-            <P>Flowing Silver, 128 GB, 8 GB RAM</P>
-            <span class = "price">₹20,999</span>
-            <button>BUY NOW</button>
-        </div>
-        <div class ="card">
-            <img src = "https://m.media-amazon.com/images/I/41+ciN8P4FL._SY300_SX300_QL70_FMwebp_.jpg" alt = "Mobile 3">
-            <h2>iQOO Z10R 5G</h2>
-            <P>Moonstone, 8GB RAM, 256GB Storage</P>
-            <span class = "price">₹21,498</span>
-            <button>BUY NOW</button>
-        </div>
 
+    <div class="hero gsap-hero">
+        <h1>Discover the Future.</h1>
+        <p>Explore our curated collection of next-generation smartphones. Experience unparalleled power, revolutionary cameras, and stunning designs.</p>
     </div>
+
+    <div class="container">
+        <div class="card-container gsap-stagger">
+            
+            <div class="card tilt-card">
+                <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="iPhone 15 Pro">
+                <h2>Apple iPhone 15 Pro</h2>
+                <p>Titanium. A17 Pro chip. 256GB.</p>
+                <span class="price">₹1,34,900</span>
+                <button class="btn-primary">Add to Cart</button>
+            </div>
+
+            <div class="card tilt-card">
+                <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="Samsung Galaxy S24 Ultra">
+                <h2>Galaxy S24 Ultra</h2>
+                <p>Titanium Gray, 12GB RAM, 512GB.</p>
+                <span class="price">₹1,39,999</span>
+                <button class="btn-primary">Add to Cart</button>
+            </div>
+
+            <div class="card tilt-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="Google Pixel 8 Pro">
+                <h2>Google Pixel 8 Pro</h2>
+                <p>Obsidian, 12GB RAM, 128GB.</p>
+                <span class="price">₹1,06,999</span>
+                <button class="btn-primary">Add to Cart</button>
+            </div>
+
+            <div class="card tilt-card">
+                <img src="https://images.unsplash.com/photo-1592899677974-e50880b00546?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="Samsung Galaxy A55">
+                <h2>Samsung Galaxy A55 5G</h2>
+                <p>Awesome Iceblue, 8GB RAM, 256GB.</p>
+                <span class="price">₹42,999</span>
+                <button class="btn-primary">Add to Cart</button>
+            </div>
+
+            <div class="card tilt-card">
+                <img src="https://images.unsplash.com/photo-1598327105666-5b89351cb31b?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="OnePlus 12">
+                <h2>OnePlus 12 5G</h2>
+                <p>Flowy Emerald, 16GB RAM, 512GB.</p>
+                <span class="price">₹69,999</span>
+                <button class="btn-primary">Add to Cart</button>
+            </div>
+
+            <div class="card tilt-card">
+                <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cddea?w=500&auto=format&fit=crop&q=60" style="object-fit: cover;" alt="iQOO 12">
+                <h2>iQOO 12 5G</h2>
+                <p>Legend Edition, 12GB RAM, 256GB.</p>
+                <span class="price">₹52,999</span>
+                <button class="btn-primary">Add to Cart</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Why Choose Us Banner -->
+    <div class="container gsap-stagger">
+        <h2 class="section-title">Why Choose Nexus</h2>
+        <div class="feature-grid" style="margin-top: 0;">
+            <div class="feature-card tilt-card" data-tilt-scale="1.05">
+                <strong>🛡️ Verified Authenticity</strong>
+                <p>Every device is 100% authentic, sourced directly from manufacturers with full warranties.</p>
+            </div>
+            <div class="feature-card tilt-card" data-tilt-scale="1.05">
+                <strong>✈️ Global Express Shipping</strong>
+                <p>Receive your premium device anywhere in the world within 48 hours, fully insured.</p>
+            </div>
+            <div class="feature-card tilt-card" data-tilt-scale="1.05">
+                <strong>💎 Elite Concierge</strong>
+                <p>Access 24/7 priority support and personalized tech setup assistance with your purchase.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Nexus Mobile</h3>
+                <p>Curating the world's most exceptional technology for the uncompromising individual.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Catalog</a></li>
+                    <li><a href="home.html">Buyer's Guide</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe for exclusive early access to limited edition drops.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Email Address">
+                    <button>Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nexus Mobile. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts: GSAP, VanillaTilt, and Custom Logic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
